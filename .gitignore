@@ -1,0 +1,6 @@
+__pycache__/*
+driver/secure.py
+*.xml
+*.pyc
+.idea/*
+venv/*
