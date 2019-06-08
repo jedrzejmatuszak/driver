@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'driver',
-    'core',
+    'driver.core',
     'django_extensions',
     'rest_framework',
+    'tagging',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,6 @@ EMAIL_USE_TLS = EMAIL_USE_TLS
 EMAIL_PORT = EMAIL_PORT
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+
+# Tagging
+FORCE_LOWERCASE_TAGS = True
