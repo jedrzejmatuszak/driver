@@ -10,6 +10,9 @@ class Hint(models.Model):
     tags = TagField()
     publish_date = models.DateTimeField()
 
+    class Meta:
+        ordering = ('publish_date', )
+
 
 class Quiz(models.Model):
     hint = models.OneToOneField(Hint, on_delete=models.CASCADE)
