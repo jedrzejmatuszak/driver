@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hint, Quiz, Answer
+from .models import Hint, Quiz, Answer, Question
 
 
 class HintSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,6 +13,12 @@ class HintSerializer(serializers.HyperlinkedModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
+        fields = '__all__'
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
         fields = '__all__'
 
 

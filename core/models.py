@@ -14,6 +14,11 @@ class Hint(models.Model):
         ordering = ('publish_date', )
 
 
+class Question(models.Model):
+    question = models.TextField()
+    answers = models.ForeignKey('Answer', on_delete=models.SET_NULL, null=True)  # in form must be RadioSelectField
+
+
 class Answer(models.Model):
     positive_answer = models.TextField()
     negative_answer1 = models.TextField()
@@ -22,5 +27,4 @@ class Answer(models.Model):
 
 class Quiz(models.Model):
     hint = models.OneToOneField(Hint, on_delete=models.CASCADE)
-    question = models.TextField()
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)  # in form must be RadioSelectField
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
