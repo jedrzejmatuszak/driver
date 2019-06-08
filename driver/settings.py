@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'driver',
-    'driver.core',
+    'core',
     'django_extensions',
     'rest_framework',
     'tagging',
@@ -112,8 +112,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
-
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -130,3 +129,9 @@ EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
 # Tagging
 FORCE_LOWERCASE_TAGS = True
+
+# Pagination
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': '10'
+}
