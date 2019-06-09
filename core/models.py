@@ -9,7 +9,6 @@ class Hint(models.Model):
     content = models.TextField(verbose_name='Zawartosć')
     tags = TagField(verbose_name='Tagi')
     publish_date = models.DateTimeField(verbose_name='Data publikacji')
-    quiz = models.ForeignKey('Quiz', on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ('publish_date', )
@@ -19,19 +18,19 @@ class Hint(models.Model):
 
 
 class Question(models.Model):
-    hint = models.ForeignKey(Hint, on_delete=models.CASCADE)
+    hint = models.ForeignKey(Hint, on_delete=models.CASCADE, verbose_name='Porada')
     question = models.TextField()
     positive_answer = models.TextField()
     negative_answer1 = models.TextField()
     negative_answer2 = models.TextField()
 
     def __str__(self):
-        return self.hint.title
+        return self.question
 
 
 class Quiz(models.Model):
-    title = models.TextField(null=True)
-    question = models.ManyToManyField(Question)
+    hint = models.ForeignKey(Hint, on_delete=models.CASCADE, related_name='quiz')
+    question = models.ManyToManyField(Question, related_name='quiz')
 
     def __str__(self):
-        return self.title
+        return self.hint.title
