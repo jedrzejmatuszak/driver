@@ -9,6 +9,7 @@ class HintList(generics.ListCreateAPIView):
     """
     queryset = Hint.objects.all()
     serializer_class = HintSerializer
+    ordering = ('id', )
 
 
 class HintDetail(generics.RetrieveUpdateDestroyAPIView):
